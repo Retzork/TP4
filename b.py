@@ -221,25 +221,21 @@ class BuatPesanan(object):
             return choice(avail) 
     
     def ganti_meja(self, labelMeja):
-        TabelMeja('ubah', self.meja, labelMeja)
+        TabelMeja('ubah', labelMeja)
         self.meja = self.labelMeja
 
 
 class TabelMeja(object):
-    def __init__(self, jenis = '', noMeja = -1, labelMeja = Label()):        
+    def __init__(self, jenis = '', meja = -1, ):        
         self.master = Toplevel()
-        prevLabel = labelMeja
-        currentMeja = noMeja
-        self.master.geometry('300x300')
         # self.labelMeja['text'] = (f'No meja : {self.meja}')
         roww = 0
-        lbl_greet = Label(self.master, text= f'Silakan klik meja kosong yang di inginkan:')
-        lbl_greet.grid(row= roww, column= 0, padx=(40), pady=(0, 20), columnspan=4)
+        lbl_greet = Label(self.master, text= f'Silakan klik meja kosong yang di inginkan')
+        lbl_greet.grid(row= roww, column= 0, pady=(0, 20))
 
         for i in range(10):
-            padding = (3,6) if i//5 == 0 else (6,3)
-            button = Button(self.master, text=f'{i}', width = 10, bg='#808A87', fg='white')
-            button.grid(row=i%5+1, column=i//5+1, pady=10, padx=padding)
+            button = Button(self.master, text=f'{i}')
+            button.grid(row=i/5, column=i%5)
 
        
 
